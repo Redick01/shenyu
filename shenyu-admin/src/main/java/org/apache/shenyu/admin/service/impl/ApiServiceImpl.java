@@ -37,10 +37,10 @@ import org.apache.shenyu.admin.model.vo.ApiVO;
 import org.apache.shenyu.admin.model.vo.RuleVO;
 import org.apache.shenyu.admin.model.vo.TagVO;
 import org.apache.shenyu.admin.service.ApiService;
+import org.apache.shenyu.common.utils.ListUtil;
 import org.apache.shenyu.admin.service.MetaDataService;
 import org.apache.shenyu.admin.service.RuleService;
 import org.apache.shenyu.admin.service.SelectorService;
-import org.apache.shenyu.admin.utils.ListUtil;
 import org.apache.shenyu.admin.utils.ShenyuResultMessage;
 import org.apache.shenyu.common.constant.AdminConstants;
 import org.apache.shenyu.common.dto.RuleData;
@@ -113,6 +113,7 @@ public class ApiServiceImpl implements ApiService {
                     .id(UUIDUtils.getInstance().generateShortUuid())
                     .apiId(apiDO.getId())
                     .tagId(tagId)
+                    .dateCreated(currentTime)
                     .dateUpdated(currentTime)
                     .build()).collect(Collectors.toList());
                 tagRelationMapper.deleteByApiId(apiDO.getId());
